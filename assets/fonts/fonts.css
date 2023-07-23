@@ -1,0 +1,60 @@
+@font-face {
+    font-display: swap;
+    font-family: 'SourceHanSerifSC';
+    font-weight: normal;
+    src: local('SourceHanSerifSC-Regular'),
+        url('./SourceHanSerifSC-Regular.otf') format('opentype');
+    unicode-range: U+2000-206F, U+4E00-9FA5, U+9FA6-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B738, U+2B740-2B81D, U+2B820-2CEA1, U+2CEB0-2EBE0, U+30000-3134A, U+2F00-2FD5, U+2E80-2EF3, U+F900-FAD9, U+2F800-2FA1D, U+E815-E86F, U+E400-E5E8, U+E600-E6CF, U+31C0-31E3, U+2FF0-2FFB, U+3105-312F, U+31A0-31BA, U+3007;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'SourceHanSerifSC';
+    font-weight: bold;
+    src: local('SourceHanSerifSC-Bold'),
+        url('./SourceHanSerifSC-Bold.otf') format('opentype');
+    unicode-range: U+2000-206F, U+4E00-9FA5, U+9FA6-9FFF, U+3400-4DBF, U+20000-2A6DF, U+2A700-2B738, U+2B740-2B81D, U+2B820-2CEA1, U+2CEB0-2EBE0, U+30000-3134A, U+2F00-2FD5, U+2E80-2EF3, U+F900-FAD9, U+2F800-2FA1D, U+E815-E86F, U+E400-E5E8, U+E600-E6CF, U+31C0-31E3, U+2FF0-2FFB, U+3105-312F, U+31A0-31BA, U+3007;
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Minion Pro';
+    font-style: normal;
+    src: local('MinionPro-Regular'),
+        url('./MinionPro-Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Minion Pro';
+    font-style: italic;
+    src: local('MinionPro-It'),
+        url('./MinionPro-It.otf') format('opentype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Minion Pro';
+    font-style: normal;
+    font-weight: bold;
+    src: local('MinionPro-Bold'),
+        url('./MinionPro-Bold.otf') format('opentype');
+}
+
+@font-face {
+    font-display: swap;
+    font-family: 'Minion Pro';
+    font-style: italic;
+    font-weight: bold;
+    src: local('MinionPro-BoldIt'),
+        url('./MinionPro-BoldIt.otf') format('opentype');
+}
+
+
+@font-face {
+    font-family: 'Fira Code';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Fira Code Regular Nerd Font Complete Mono'),
+        url('./Fira Code Regular Nerd Font Complete Mono.ttf') format('truetype');
+}
