@@ -75,6 +75,11 @@ body {
   & + .page__meta {
     margin-top: -0.5em;
   }
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+  }
 }
 
 .page__lead {

@@ -106,7 +106,6 @@ author:
   bio              : "Hi! Welcome to my blog site. Enjoy reading!"
   # location         : "Somewhere"
   email            : "kylelynx7289@gmail.com"
-  # url:             : "https://ihnfsax.github.io"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
