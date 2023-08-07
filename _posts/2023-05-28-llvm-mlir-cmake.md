@@ -166,7 +166,7 @@ target_link_libraries(${name} ${libtype}
 查看所有组件名：
 
 ```bash
-llvm-config --components all
+llvm-config --components
 ```
 
 ### `LINK_LIBS PUBLIC`
