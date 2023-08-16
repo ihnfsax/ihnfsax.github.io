@@ -348,7 +348,7 @@ the_acceptor.listen();                               // call listen
 
 `acceptor_(io_context, tcp::endpoint(tcp::v4(), port))` 调用覆盖了上述大部分工作，而 `setsockopt` 在 `listen` 系统调用之后被调用。
 
-第二要思考的点是，如果多次调用 `accept` 会发生什么？会有性能上的提升吗？答案是什么也不会改变。在 Linux 上，`async_accept` 添加的异步操作实际上是对非阻塞 `accept` 的循环调用。即异步操作执行单元在 `epoll_wait` 返回一个连接事件后，循环调用 `accept` 直到 `accept` 返回 `EAGAIN`，每个成功建立的连接都将使一个新的完成句柄就绪。因此，Asio 内部已经做了对短时间大量连接请求的优化处理，多次调用 `async_accept` 毫无意义。
+第二要思考的点是，如果多次调用 `accept` 会发生什么？会有性能上的提升吗？程序代码每一次对 `async_accept` 调用都是添加一个需要异步操作执行单元去完成的 `accept` 的操作。常见的做法是，程序在 `async_accept` 的完成句柄中再一次调用 `async_accept`。程序代码应该尽量避免两次调用 `async_accept` 的间隔过长。如果该情况无法避免，一个备选的方案是多次调用 `async_accept`，并且启动多个线程去执行 `io_context.run()`，以确保连接建立事件发生时，有足够的线程可以去 `accept`。
 
 第三要思考的点是，我们可以多次调用 `async_read` 或 `async_write` 吗？这个问题要分为两个情况考虑。如果是对同一个已连接套接字，重复调用读写函数是完全错误的（联想系统调用）。如果是对不同的套接字，那么可以重复调用读写函数，不同套接字的读写互不影响。
 
