@@ -266,7 +266,6 @@ class session : public std::enable_shared_from_this<session> {
         boost::asio::buffer(data_, max_length),
         [this, self](boost::system::error_code ec, std::size_t length) {
           if (!ec) {
-            std::cout << "kkkkkkk" << std::endl;
             do_write(length);
           }
         });
@@ -306,7 +305,7 @@ class server {
           }
 
           do_accept();
-        });  // EPOLLIN|EPOLLPRI|EPOLLERR|EPOLLHUP|EPOLLET
+        });
   }
 
   tcp::acceptor acceptor_;
