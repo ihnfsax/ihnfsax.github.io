@@ -1,5 +1,5 @@
 ---
-title: "Radix Hash Join"
+title: "论文阅读：Radix Hash Join"
 date: 2023-10-09
 categories:
   - Database
