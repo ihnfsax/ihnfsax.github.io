@@ -35,7 +35,7 @@ tags:
 
 ## Sub-Operators 定义
 
-<img src="{{ "/assets/images/sub-operators/sub-operators.png" />
+<img src="{{ "/assets/images/sub-operators/sub-operators.png" | relative_url }}" />
 
 上图是本文提出的子操作符示例。作者将子操作符分为四类：
 
