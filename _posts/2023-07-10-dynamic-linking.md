@@ -1,6 +1,6 @@
 ---
 title: "为什么需要动态链接？"
-date: 2023-07-09
+date: 2023-07-10
 categories:
   - Compile and Link
 tags:
@@ -205,7 +205,7 @@ main -> b1 -> b2 -> a1 -> a2
 
 我们可以通过查看 VMA 布局来获取装载顺序：
 
-<img src="{{ "/assets/images/dynamic-linking/load-order.png" | relative_url }}" width=500 alt="load-order" />
+<img src="{{ "/assets/images/dynamic-linking/load-order.png" | relative_url }}" alt="load-order" />
 
 ### 函数声明和定义
 

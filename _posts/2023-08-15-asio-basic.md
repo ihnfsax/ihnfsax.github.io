@@ -1,5 +1,5 @@
 ---
-title: "Boost.Asio 网络库的 I/O 模型与使用"
+title: "Boost.Asio 网络库的 I/O 模型"
 date: 2023-08-15
 categories:
   - Network
@@ -7,7 +7,7 @@ tags:
   - Boost
 ---
 
-Asio 是一个用于网络和低级 I/O（直接对文件描述符进行的 I/O）编程的跨平台 C++ 库，它使用现代 C++ 方法为开发人员提供一致的异步模型。本文基于 Boost 1.83.0 版本介绍 Asio 在网络编程中的应用。
+Asio 是一个用于网络和低级 I/O（直接对文件描述符进行的 I/O）编程的跨平台 C++ 库，它使用现代 C++ 方法为开发人员提供一致的异步模型。本文基于 Boost 1.83.0 版本介绍 Asio 的 I/O 模型，以及它在网络编程中的应用。
 
 Asio 在 [ISO/IEC TS 19216:2018](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2018/n4771.pdf) 中作为 "C++ Extensions for Networking" Technical Specification（简称 Network TS）的实现，被期望成为 C++ 标准的一部分。但是目前 Network TS 仍未成为标准，反而是后来居上的 [Sender/Recevier](https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2023/p2300r7.html) 模型更有希望成为 C++26 的一部分。为了与官方文档保持一致，本文将使用 Network TS 的 API，它与原始 Asio API 的区别可以参考[文档](https://www.boost.org/doc/libs/1_83_0/doc/html/boost_asio/net_ts.html)。
 
