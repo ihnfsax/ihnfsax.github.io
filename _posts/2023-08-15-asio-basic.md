@@ -4,7 +4,7 @@ date: 2023-08-15
 categories:
   - Network
 tags:
-  - Network
+  - Boost
 ---
 
 Asio 是一个用于网络和低级 I/O（直接对文件描述符进行的 I/O）编程的跨平台 C++ 库，它使用现代 C++ 方法为开发人员提供一致的异步模型。本文基于 Boost 1.83.0 版本介绍 Asio 在网络编程中的应用。
@@ -18,7 +18,6 @@ Asio 在 [ISO/IEC TS 19216:2018](https://www.open-std.org/jtc1/sc22/wg21/docs/pa
 Asio 同时支持同步和异步操作，这里我们直接从异步开始。下图展示了 Asio 中异步操作涉及的组件。我们所写的程序要至少包含一个 **I/O 执行上下文**，比如 `boost::asio::io_context`, `boost::asio::thread_pool`, `boost::asio::system_context`。
 
 <img src="{{ "/assets/images/asio-basic/async-op1.png" | relative_url }}" width=400 />
-
 
 为了执行 I/O 操作，我们还需要 **I/O 对象**，比如 `boost::asio::ip::tcp::socket`, `boost::asio::ip::tcp::acceptor` 等。我们需要调用 I/O 对象来初始化异步操作：
 

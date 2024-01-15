@@ -3,8 +3,6 @@ title: "论文阅读：Radix Hash Join"
 date: 2023-10-09
 categories:
   - Database
-tags:
-  - Database
 ---
 
 > 本文是对 *Main-memory hash joins on multi-core CPUs: Tuning to the underlying hardware* 论文 Part II 的翻译和解释。

@@ -3,8 +3,6 @@ title: "论文阅读：Sub-Operators"
 date: 2023-10-13
 categories:
   - Database
-tags:
-  - Database
 ---
 
 > 本文是对论文 *Database Technology for the Masses: Sub-Operators as First-Class Entities* 的翻译和解释。

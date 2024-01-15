@@ -42,7 +42,7 @@
   }
 
   .current {
-    font-weight: bold;
+    font-weight: 650;
   }
 }
 
@@ -75,7 +75,7 @@
       padding: 0.5em 1em;
       font-family: $sans-serif;
       font-size: 14px;
-      font-weight: bold;
+      font-weight: 650;
       line-height: 1.5;
       text-align: center;
       text-decoration: none;
@@ -125,7 +125,7 @@
     width: 50%;
     font-family: $sans-serif;
     font-size: $type-size-5;
-    font-weight: bold;
+    font-weight: 650;
     text-align: center;
     text-decoration: none;
     color: $muted-text-color;
@@ -353,7 +353,7 @@
       padding: 0.5em 2.5em 0.5em 1em;
       color: $gray;
       font-size: $type-size-6;
-      font-weight: bold;
+      font-weight: 650;
       border: 1px solid $light-gray;
       border-radius: $border-radius;
       z-index: 20;
@@ -449,7 +449,7 @@
     margin-left: -0.5em;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    font-weight: bold;
+    font-weight: 650;
   }
 
   @include breakpoint(max-width $large - 1px) {
@@ -485,7 +485,7 @@
   padding: 0.5rem 0.75rem;
   font-family: $sans-serif-narrow;
   font-size: $type-size-5;
-  font-weight: bold;
+  font-weight: 650;
 }
 
 .nav__sub-title {
@@ -494,7 +494,7 @@
   padding: 0.25rem 0;
   font-family: $sans-serif-narrow;
   font-size: $type-size-6;
-  font-weight: bold;
+  font-weight: 650;
   text-transform: uppercase;
   border-bottom: 1px solid $border-color;
 }
@@ -542,7 +542,7 @@
     display: block;
     padding: 0.25rem 0.75rem;
     color: $muted-text-color;
-    font-weight: bold;
+    font-weight: 650;
     line-height: 1.5;
     border-bottom: 1px solid $border-color;
 

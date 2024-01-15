@@ -2,10 +2,9 @@
 title: "LLVM 编译框架的设计决策"
 date: 2023-08-07
 categories:
-  - LLVM
+  - Compile and Link
 tags:
   - LLVM
-  - Compiler
 ---
 
 这篇文章是为那些完全不了解 LLVM 但对编译器感兴趣的人准备的。我会从 LLVM 的架构开始介绍，然后是 LLVM IR，LLVM 的代码生成器，也会涉及一些 LLVM 后端内容，但不深入到细节。读完这篇文章，希望你能对 LLVM 的设计思路有一个大致的了解。
