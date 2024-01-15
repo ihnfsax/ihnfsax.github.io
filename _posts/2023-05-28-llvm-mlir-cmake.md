@@ -2,7 +2,7 @@
 title: "LLVM/MLIR CMake 相关命令解析"
 date: 2023-05-28
 categories:
-  - Compile and Link
+  - Compiler
 tags:
   - MLIR
   - LLVM

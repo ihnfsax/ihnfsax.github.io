@@ -2,7 +2,7 @@
 title: "LLVM 编译框架的设计决策"
 date: 2023-08-07
 categories:
-  - Compile and Link
+  - Compiler
 tags:
   - LLVM
 ---
@@ -17,7 +17,7 @@ tags:
 
 传统静态编译器（比如 gcc）最流行的设计是三阶段设计 (three phase design)，其主要组件是前端、优化器和后端。
 
-<img src="{{ "/assets/images/llvm-basic/simple-compiler.png" | relative_url }}" width=500 />
+<img src="{{ "/assets/images/llvm-basic/simple-compiler.png" | relative_url }}" width=500 alt="simple-compiler" />
 
 - 前端解析源代码，检查语法错误，并构建特定于语言的抽象语法树（AST）来表示输入代码。AST 可选地被转换为新的表示以进行优化。
 - 优化器负责对中间表示进行各种各样的转换，以尝试改善代码的运行时间，例如消除冗余计算。优化器通常或多或少地独立于语言和目标。
@@ -25,7 +25,7 @@ tags:
 
 一旦当三阶段设计用于多语言多目标编译器的实现时，它的优点就体现出来了。如果在优化器中规定了统一的中间表示 (Intermediate Representation, IR)，那么我们可以为一个新前端重用所有后端，为一个新后端重用所有前端。`M` 种语言和`N`种目标的编译器，只需要实现 `M+N` 个组件，而不是 `M*N` 个组件。LLVM 也采用了这种设计，它所用的中间表示就是 LLVM IR：
 
-<img src="{{ "/assets/images/llvm-basic/llvm-three-phase.png" | relative_url }}" width=500 />
+<img src="{{ "/assets/images/llvm-basic/llvm-three-phase.png" | relative_url }}" width=500 alt="llvm-three-phase" />
 
 这个模型同样适用于解释器和 JIT 编译器。Java 虚拟机 (JVM) 也是该模型的实现，它使用 Java bytecode 作为前端和优化器之间的接口。
 
@@ -166,7 +166,7 @@ LLVM 代码生成器 (code generator) 负责将 LLVM IR 转换成目标特定的
 
 LLVM 代码生成器的设计方法允许目标作者选择对他们的体系结构有意义的内容，并允许在不同目标之间重用大量代码。这带来了另一个挑战：每个共享组件需要能够以通用方式推理目标特定属性。例如，共享的寄存器分配器需要知道每个目标的寄存器文件以及存在于指令与它们的寄存器操作数之间的约束。LLVM 对此的解决方案是让每个目标提供一个由 [tblgen](https://llvm.org/docs/TableGen/) 工具处理的声明性的的目标描述。x86 目标的描述文件包括（简化的）：
 
-<img src="{{ "/assets/images/llvm-basic/x86-target.png" | relative_url }}" width=500 />
+<img src="{{ "/assets/images/llvm-basic/x86-target.png" | relative_url }}" width=500 alt="x86-target" />
 
 x86 后端定义了一个寄存器类，它包含所有名为“GR32”的 32 位寄存器（在文件中，目标特定的定义都是大写的），如下所示：
 
@@ -225,7 +225,7 @@ LLVM 优化器提供了几十种不同的 Pass，每一种都以类似的风格�
 
 当我们需要针对特定领域代码的优化编译开发工具时，一旦选择了优化集合，这些选定的 Pass 就被构建到可执行文件或动态库中。由于对LLVM 优化 Pass 的唯一引用是每个文件中定义的函数，并且由于优化器位于静态库中，因此只有实际使用的优化 Pass 被链接到最终应用程序中，而不是整个 LLVM 优化器。
 
-<img src="{{ "/assets/images/llvm-basic/pass-linkage.png" | relative_url }}" width=470 />
+<img src="{{ "/assets/images/llvm-basic/pass-linkage.png" | relative_url }}" width=470 alt="pass-linkage" />
 
 在图中的例子中，由于有一个对 PassA 和 PassB 的引用，它们将被链接。由于 PassB 使用 PassD 进行一些分析，因此 PassD 被链接。但是，由于没有使用 PassC（以及其他数十种优化），因此其代码不会链接到我们的应用程序中。
 
@@ -241,7 +241,7 @@ LLVM 优化器提供了几十种不同的 Pass，每一种都以类似的风格�
 
 链接时间优化 (Link-Time Optimization, LTO) 解决了编译器传统上仅看到一个翻译单元（一个源文件及其包含的所有头文件），因此不能跨文件边界进行优化（如内联）的问题。像 Clang 这样的 LLVM 编译器通过 `-flto` 或 `-O4` 选项支持这一点。该选项指示编译器将 LLVM bitcode 发送到 `.o` 文件，而不是写出原生对象文件，并将代码生成延迟到链接时间：
 
-<img src="{{ "/assets/images/llvm-basic/lto.png" | relative_url }}" />
+<img src="{{ "/assets/images/llvm-basic/lto.png" | relative_url }}" alt="lto" />
 
 具体细节取决于你使用的操作系统，但重要的是链接器检测到文件中有 LLVM bitcode，而不是原生对象文件。这时，它将所有 itcode 文件读入内存，将它们链接在一起，然后在链接产物上运行 LLVM 优化器。由于优化器现在可以看到更大部分的代码，它可以内联、传播常量、执行更积极的死代码消除，以及更多的跨文件边界优化。
 
@@ -249,7 +249,7 @@ LLVM 优化器提供了几十种不同的 Pass，每一种都以类似的风格�
 
 安装时优化是将代码生成延迟到链接之后，一直到安装时间，如下图所示。例如，在 x86 系列中，存在各种各样的芯片和特性。通过延迟指令选择、调度和代码生成的其他方面，你可以为应用程序最终运行的特定硬件生成最佳代码。
 
-<img src="{{ "/assets/images/llvm-basic/install-time-opt.png" | relative_url }}" />
+<img src="{{ "/assets/images/llvm-basic/install-time-opt.png" | relative_url }}" alt="install-time-opt" />
 
 ## 参考资料
 
