@@ -4,7 +4,6 @@ date: 2023-06-25
 categories:
   - Database
 tags:
-  - Compilation
   - LLVM
   - OLAP
   - JIT
