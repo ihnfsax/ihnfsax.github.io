@@ -6,15 +6,20 @@
   margin-top: 1em;
   margin-bottom: 2em;
 
+  margin-left: auto;
+  margin-right: auto; // center
+
   @include breakpoint($large) {
-    float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
+    // float: right;
+    // width: calc(100% - #{$right-sidebar-width-narrow});
+    // padding-right: $right-sidebar-width-narrow;
+    width: calc(100% - 400px);
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
-    padding-right: $right-sidebar-width;
+    // width: calc(100% - #{$right-sidebar-width});
+    // padding-right: $right-sidebar-width;
+    width: calc(100% - 500px);
   }
 }
 
@@ -32,13 +37,14 @@
 }
 
 .archive__subtitle {
-  margin: 1.414em 0 0.5em;
-  padding-bottom: 0.5em;
+  // margin: 1.414em 0 0.5em;
+  // padding-bottom: 0.5em;
+  margin-bottom: 0;
   font-size: $type-size-5;
   color: $muted-text-color;
-  border-bottom: 1px solid $border-color;
+  // border-bottom: 1px solid $border-color;
 
-  + .list__item .archive__item-title {
+  +.list__item .archive__item-title {
     margin-top: 0.5em;
   }
 }
@@ -64,7 +70,7 @@
     bottom: 0;
   }
 
-  a + a {
+  a+a {
     opacity: 0.5;
   }
 }
@@ -81,7 +87,7 @@
   margin-top: 0;
   font-size: $type-size-6;
 
-  & + p {
+  &+p {
     text-indent: 0;
   }
 
@@ -173,8 +179,10 @@
   }
 
   @include breakpoint($medium) {
-    margin-left: 0; /* override margin*/
-    margin-right: 0; /* override margin*/
+    margin-left: 0;
+    /* override margin*/
+    margin-right: 0;
+    /* override margin*/
     width: span(4 of 12);
 
     &:nth-child(2n + 1) {
@@ -447,7 +455,7 @@
    Wide Pages
    ========================================================================== */
 
-  .wide {
+.wide {
   .archive {
     @include breakpoint($large) {
       padding-right: 0;
@@ -462,7 +470,7 @@
 /* Place inside a single layout */
 
 .layout--single {
-	.feature__wrapper {
-		display: inline-block;
-	}
+  .feature__wrapper {
+    display: inline-block;
+  }
 }

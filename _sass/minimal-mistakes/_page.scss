@@ -27,7 +27,7 @@ body {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .initial-content,
@@ -38,13 +38,17 @@ body {
 .page {
   @include breakpoint($large) {
     float: right;
-    width: calc(100% - #{$right-sidebar-width-narrow});
-    padding-right: $right-sidebar-width-narrow;
+    // width: calc(100% - #{$right-sidebar-width-narrow});
+    // padding-right: $right-sidebar-width-narrow;
+    width: calc(100% - 90px);
+    padding-right: 250px;
   }
 
   @include breakpoint($x-large) {
-    width: calc(100% - #{$right-sidebar-width});
-    padding-right: $right-sidebar-width;
+    // width: calc(100% - #{$right-sidebar-width});
+    // padding-right: $right-sidebar-width;
+    width: calc(100% - 100px);
+    padding-right: 400px;
   }
 
   .page__inner-wrap {
@@ -72,7 +76,7 @@ body {
   margin-top: 0;
   line-height: 1;
 
-  & + .page__meta {
+  &+.page__meta {
     margin-top: -0.5em;
   }
 
@@ -93,7 +97,12 @@ body {
     border-bottom: 1px solid $border-color;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     .header-link {
       position: relative;
       left: 0.5em;
@@ -106,7 +115,7 @@ body {
     }
 
     &:hover .header-link {
-        opacity: 1;
+      opacity: 1;
     }
   }
 
@@ -114,14 +123,14 @@ body {
     font-weight: 650;
   }
 
-  > p,
-  > ol,
-  > ul,
-  > dl {
+  >p,
+  >ol,
+  >ul,
+  >dl {
     font-size: 0.85em;
   }
 
-  > blockquote {
+  >blockquote {
     font-size: 0.8em;
   }
 
@@ -130,8 +139,8 @@ body {
     margin: 0 0 $indent-var;
 
     /* sibling indentation*/
-    @if $paragraph-indent == true {
-      & + p {
+    @if $paragraph-indent ==true {
+      &+p {
         text-indent: $indent-var;
         margin-top: -($indent-var);
       }
@@ -165,7 +174,7 @@ body {
   }
 
   /* blockquote citations */
-  blockquote + .small {
+  blockquote+.small {
     margin-top: -1.5em;
     padding-left: 1.25rem;
   }
@@ -365,7 +374,7 @@ body {
     border: 0;
   }
 
-  + .taxonomy__section {
+  +.taxonomy__section {
     margin-top: 2em;
   }
 }
@@ -442,6 +451,7 @@ body {
   transition: $global-transition;
 
   &.disabled {
+
     input,
     button,
     textarea,
@@ -526,14 +536,14 @@ body {
   border-top: 1px solid $border-color;
   width: 100%;
 
-//   @include breakpoint($large) {
-//     float: right;
-//     width: calc(100% - #{$right-sidebar-width-narrow});
-//   }
+  //   @include breakpoint($large) {
+  //     float: right;
+  //     width: calc(100% - #{$right-sidebar-width-narrow});
+  //   }
 
-//   @include breakpoint($x-large) {
-//     width: calc(100% - #{$right-sidebar-width});
-//   }
+  //   @include breakpoint($x-large) {
+  //     width: calc(100% - #{$right-sidebar-width});
+  //   }
 
   a {
     color: inherit;

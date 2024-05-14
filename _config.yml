@@ -103,6 +103,7 @@ analytics:
 author:
   name             : "ihnfsa"
   avatar           : "/assets/images/profile.jpg" # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  show_avatar      : false
   bio              : "Hi! Welcome to my blog site. Enjoy reading!"
   # location         : "Somewhere"
   email            : "kylelynx7289@gmail.com"
@@ -288,7 +289,7 @@ defaults:
       type: posts
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       show_date: true
       show_count: true
       read_time: false
@@ -303,5 +304,5 @@ defaults:
       type: pages
     values:
       layout: single
-      author_profile: true
+      author_profile: false
       mathjax: true
