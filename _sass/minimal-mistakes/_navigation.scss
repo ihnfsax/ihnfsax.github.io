@@ -579,3 +579,13 @@
     padding-left: 3.75rem
   }
 }
+
+.toc__menu::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
+  /* make scrollbar transparent */
+}
+
+.toc__menu::-moz-scrollbar {
+  width: 0px;
+}
