@@ -385,7 +385,9 @@ target_sources(demo
 CXX=clang++ cmake -S . -B build -G Ninja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
 ```
 
-查看生成的 `compile_commands.json` 可以发现，实际使用的编译命令并未采用前面所说的 `-fprebuilt-module-path` 或 `-fmodule-file` 选项，而是引入了一个 modmap 文件。这导致 clangd 这种工具无法解析出 module 的声明在哪。截止到 2024 年 5 月，clangd 对 C++20 module 的支持仍然很弱，当前进度可关注[论坛](https://discourse.llvm.org/t/rfc-directions-for-modules-support-in-clangd/78072)和[仓库](https://github.com/clangd/clangd/issues/1293)。
+查看生成的 `compile_commands.json` 可以发现，实际使用的编译命令并未采用前面所说的 `-fprebuilt-module-path` 或 `-fmodule-file` 选项，而是引入了一个 modmap 文件。
+
+截止到 2024 年 5 月，clangd 对 C++20 module 的支持依旧局限于 `-fprebuilt-module-path` 和 `-fmodule-file` 选项，无法从 cmake 生成的命令中找到 module 的位置。当前 clangd 的 module 支持的进度可关注[论坛](https://discourse.llvm.org/t/rfc-directions-for-modules-support-in-clangd/78072)和[仓库](https://github.com/clangd/clangd/issues/1293)。
 
 ## 参考资料
 
