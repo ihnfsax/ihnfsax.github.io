@@ -1,5 +1,5 @@
 ---
-title: "C++20 Module 机制详解"
+title: "C++20 Module 使用指南"
 date: 2024-05-21
 categories:
   - C++
