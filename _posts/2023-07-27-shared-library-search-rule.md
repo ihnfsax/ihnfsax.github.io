@@ -30,13 +30,14 @@ Dynamic section at offset 0x5c18 contains 34 entries:
 
 其中，NEEDED 代表当前文件**直接**依赖的共享库。RPATH 和 RUNPATH 都表示共享库的搜索路径，多个路径用 `:` 隔开。动态链接器为了找到共享库，会按照如下顺序搜索：
 
-1. `RPATH`：链接到可执行文件的目录列表，在大多数 UNIX 系统上都支持。如果 `RUNPATH` 存在，则被忽略。
-2. `LD_LIBRARY_PATH`：保存目录列表的环境变量。
-3. `RUNPATH`：与 `RPATH` 相同，但在 `LD_LIBRARY_PATH` 之后搜索。仅在最新的 UNIX 系统上支持，例如在大多数当前的 Linux 系统上。
-4. `/etc/ld.so.cache`：列出其他库目录的配置文件。
-5. 内置目录，基本上就是 `/lib` 和 `/usr/lib`。
+1. `LD_PRELOADS`：保存库文件路径列表的环境变量，优先于其他所有方式。
+2. `RPATH`：ELF 文件内嵌的目录路径列表。在大多数 UNIX 系统上都支持。当 `RUNPATH` 存在时被链接器忽略。
+3. `LD_LIBRARY_PATH`：保存目录路径列表的环境变量。
+4. `RUNPATH`：ELF 文件内嵌的目录路径列表。仅在最新的 UNIX 系统上支持，例如在大多数当前的 Linux 系统上。
+5. `/etc/ld.so.cache`：列出其他库目录的配置文件。
+6. 内置目录，基本上就是 `/lib` 和 `/usr/lib`。
 
-RPATH 和 RUNPATH 在编译时嵌入到二进制文件当中，而 LD_LIBRARY_PATH 环境变量随时都可以设置。
+RPATH 和 RUNPATH 需要在编译时嵌入到二进制文件当中，而 LD_PRELOADS, LD_LIBRARY_PATH 环境变量随时都可以设置。
 
 `/etc/ld.so.cache` 是一个缓存文件，由 ldconfig 生成。我们可以查看 `/etc/ld.so.conf.d/` 目录下的文件，它们相当于 `/etc/ld.so.cache` 的文本形式：
 
@@ -77,4 +78,4 @@ LD_DEBUG=libs ./executable
 target_link_options(<target> PRIVATE "-Wl,--disable-new-dtags")
 ```
 
-CMake 不会直接调用链接器，而是先编译出对象文件，再使用**编译器**将对象文件链接为可执行文件。所以 `target_link_options` 不是将选项传递给链接器，而是在编译器链接阶段传递给编译器，因此需要使用 `-Wl` 选项。
+CMake 不会直接使用链接器 (ld/ldd)，而是先编译出对象文件，再使用 gcc 等工具将对象文件链接为可执行文件。使用 gcc 等工具链接时，想要传递选项给链接器，必须加上 `-Wl` 前缀。
