@@ -1,5 +1,5 @@
 ---
-title: "Linux 进程的完全公平调度器 (CFS)"
+title: "Linux 进程管理之完全公平调度器 (CFS)"
 date: 2024-10-05
 categories:
   - Linux Kernel
