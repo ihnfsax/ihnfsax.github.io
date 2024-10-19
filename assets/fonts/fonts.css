@@ -1,10 +1,10 @@
-@font-face {
+/* @font-face {
     font-display: swap;
     font-family: 'MiSans';
     font-weight: 450;
     src: local('MiSans-Regular'),
         url('./MiSans-Regular.woff2') format('woff2');
-}
+} */
 
 @font-face {
     font-display: swap;
@@ -14,13 +14,13 @@
         url('./MiSans-Demibold.woff2') format('woff2');
 }
 
-@font-face {
+/* @font-face {
     font-display: swap;
     font-family: 'MiSans';
     font-weight: 650;
     src: local('MiSans-Semibold'),
         url('./MiSans-Semibold.woff2') format('woff2');
-}
+} */
 
 @font-face {
     font-family: 'Fira Code';

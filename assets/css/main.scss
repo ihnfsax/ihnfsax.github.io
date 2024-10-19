@@ -6,6 +6,9 @@
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import url('../fonts/fonts.css');
+@import url('../fonts/MiSans-Regular/result.css');
+@import url('../fonts/MiSans-Semibold/result.css');
+@import url('../fonts/MiSans-Demibold/result.css');
 
 
 $serif: 'MiSans', -apple-system, serif !default;
