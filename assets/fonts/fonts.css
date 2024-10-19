@@ -6,13 +6,13 @@
         url('./MiSans-Regular.woff2') format('woff2');
 } */
 
-@font-face {
+/* @font-face {
     font-display: swap;
     font-family: 'MiSans';
     font-weight: 600;
     src: local('MiSans-Demibold'),
         url('./MiSans-Demibold.woff2') format('woff2');
-}
+} */
 
 /* @font-face {
     font-display: swap;
@@ -27,5 +27,5 @@
     font-style: normal;
     font-weight: 400;
     src: local('Fira Code Regular Nerd Font Complete Mono'),
-        url('./Fira Code Regular Nerd Font Complete Mono.ttf') format('truetype');
+        url('./Fira Code Regular Nerd Font Complete Mono.woff2') format('woff2');
 }

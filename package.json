@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "cn-font-split": "^5.2.2"
+    "cn-font-split": "^5.2.2",
+    "ttf2woff2": "^6.0.1"
   }
 }
